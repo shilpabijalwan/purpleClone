@@ -91,7 +91,7 @@ export default function Navbar({ appbar }) {
           // border={"1px solid black"}
         >
           <Image
-            src="Untitled design (1).png"
+            src="https://document-export.canva.com/2akXM/DAFth62akXM/8/thumbnail/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20230919%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230919T214907Z&X-Amz-Expires=85683&X-Amz-Signature=b1ebd66c8fa8d37782d369bab53a5afb8b5d9140e11ae884dcd3d82753b99eb2&X-Amz-SignedHeaders=host&response-expires=Wed%2C%2020%20Sep%202023%2021%3A37%3A10%20GMT"
             h={50}
             // border={"1px solid black"}
           />
