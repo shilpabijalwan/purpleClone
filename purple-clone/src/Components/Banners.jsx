@@ -3,8 +3,8 @@ import React from "react";
 
 export default function Banners({ image }) {
   return (
-    <Box border={"1px solid blue"} mt={10} m={"auto"} w={"80%"}>
-      <Image src={image} />
+    <Box m={"auto"} w={{ sm: "90%", lg: "80%" }} mb={20}>
+      <Image src={image} m={"auto"} />
     </Box>
   );
 }

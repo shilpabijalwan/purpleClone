@@ -73,7 +73,12 @@ export default function Carousel() {
   };
   return (
     <>
-      <Box w={{ base: "90%", md: "80%" }} m={"auto"} mb={10}>
+      <Box
+        w={{ base: "90%", md: "80%" }}
+        m={"auto"}
+        mb={20}
+        // border={"1px solid blue"}
+      >
         <Slider {...settings}>
           {data.map((ele) => (
             <Box key={ele.id} w={"100%"}>

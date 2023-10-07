@@ -55,7 +55,7 @@ export default function GenricComponent({
             display={"flex"}
             mt={2}
             px={2}
-            border={"1px solid blue"}
+            border={"1px solid #EBEBEB"}
             justifyContent={"space-around"}>
             <b>₹ {actualdata}</b>
 
