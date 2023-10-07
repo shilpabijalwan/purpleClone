@@ -1,9 +1,9 @@
 import { Button } from "@chakra-ui/react";
 import React from "react";
 
-export default function AddToCart() {
+export default function AddToCart({ varient, px, size, w }) {
   return (
-    <Button px={10} colorScheme="blue">
+    <Button px={px} colorScheme="blue" variant={varient} size={size} w={w}>
       Add To Cart
     </Button>
   );

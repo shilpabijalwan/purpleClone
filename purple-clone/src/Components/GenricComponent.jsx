@@ -2,7 +2,7 @@ import { Box, Heading, Image, Text } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import SingleProductPage from "../Pages/SingleProductPage";
+
 const truncate = (input) =>
   input.length > 5 ? `${input.substring(0, 40)}...` : input;
 

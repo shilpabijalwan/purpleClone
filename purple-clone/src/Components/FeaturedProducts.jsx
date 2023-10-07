@@ -16,17 +16,24 @@ import { useState } from "react";
 import GenricComponent from "./GenricComponent";
 import { SampleNextArrow, SamplePrevArrow } from "./Carousel";
 
-export default function FeaturedProducts() {
+export default function FeaturedProducts({ url }) {
   const [data, setData] = useState([]);
 
+  // useEffect(() => {
+  //   DataFetched(featuredUrl).then((res) => {
+  //     // console.log(res.data);
+  //     setData(res.data);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    DataFetched("https://tan-frail-hummingbird.cyclic.app/featured").then(
-      (res) => {
-        // console.log(res.data);
-        setData(res.data);
-      }
-    );
+    DataFetched(url).then((res) => {
+      // console.log(res.data);
+      setData(res.data);
+      console.log(data);
+    });
   }, []);
+
   var settings = {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,

@@ -3,39 +3,50 @@ import { useParams } from "react-router-dom";
 
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 
-import Navbar from "../Components/Navbar";
-import PageNavigation from "../Components/PageNavigation";
+import Navbar from "../../Components/Navbar";
+import PageNavigation from "../../Components/PageNavigation";
 
-import { ProductImages } from "../Components/ProductImages";
-import Stars from "../Components/Stars";
+import { ProductImages } from "../../Components/ProductImages";
+import Stars from "../../Components/Stars";
 
-import AddToCart from "../Components/AddToCart";
-import AddToWishList from "../Components/AddToWishList";
+import AddToCart from "../../Components/AddToCart";
+import AddToWishList from "../../Components/AddToWishList";
 
-import ZipCode from "../Components/ZipCode";
-import Footer from "../Components/Footer";
+import ZipCode from "../../Components/ZipCode";
+import Footer from "../../Components/Footer";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Get_Product } from "../Redux/Products/action";
 
-import Spiner from "../Components/Spiner";
+import Spiner from "../../Components/Spiner";
 
-export default function SingleProductPage() {
+import { GET_Single_SWISS_DATA } from "../../Redux/SwissBeauty/action";
+
+export default function BrandSinglePage() {
   const { id } = useParams();
-  // console.log(id);
+
   const dispatch = useDispatch();
 
   const store = useSelector((data) => {
-    return data.productReducer;
+    return data.SwissReducer.singleSwissProduct;
   });
-  // console.log(store);
 
-  const { isLoading, isError } = store;
+  const store2 = useSelector((data) => {
+    return data.SwissReducer;
+  });
+
+  const { isLoading, isError } = store2;
+
+  // console.log(isLoading);
+
+  useEffect(() => {
+    dispatch(GET_Single_SWISS_DATA(id));
+  }, []);
 
   const [savemoney, setSavemoney] = useState();
   const [actualdata, setActualdata] = useState();
 
-  const { images } = store.products;
+  const { images } = store;
+  // console.log(images);
 
   const discountPrice = (discountvalue, price) => {
     let data = (discountvalue / 100) * price;
@@ -46,11 +57,7 @@ export default function SingleProductPage() {
   };
 
   useEffect(() => {
-    dispatch(Get_Product(id));
-  }, []);
-
-  useEffect(() => {
-    discountPrice(store.products.discount, store.products.price);
+    discountPrice(store.discount, store.price);
   }, [discountPrice]);
 
   return isLoading ? (
@@ -59,9 +66,6 @@ export default function SingleProductPage() {
     <>
       <Box bg={"#F4F6F5"} pb={3}>
         <Navbar />
-        <Box py={5} m={"auto"} w={"85%"}>
-          <PageNavigation name={store.products.category} />
-        </Box>
 
         <Flex
           boxShadow={"lg"}
@@ -84,39 +88,32 @@ export default function SingleProductPage() {
           <Box w={{ base: "100%", md: "100%", lg: "39%" }} px={2}>
             <Box>
               <Heading size={"sm"} p={2} lineHeight={6}>
-                {store.products.discription}
+                {store.discription}
               </Heading>
             </Box>
 
-            {store.products.stars ? (
-              <Stars
-                stars={store.products.stars}
-                review={store.products.review}
-              />
+            {store.stars ? (
+              <Stars stars={store.stars} review={store?.review} />
             ) : (
               ""
             )}
 
             <Box display={"flex"} gap={5} mt={5}>
-              {store.products.price ? (
-                <Heading size={"lg"}>₹ {actualdata}</Heading>
-              ) : (
-                ""
-              )}
+              {store.price ? <Heading size={"lg"}>₹ {actualdata}</Heading> : ""}
 
-              {store.products.discount ? (
+              {store.discount ? (
                 <del color="gray">
                   <Text fontSize={15} mt={3}>
-                    ₹{store.products.price}
+                    ₹{store.price}
                   </Text>
                 </del>
               ) : (
                 ""
               )}
 
-              {store.products.discount ? (
+              {store.discount ? (
                 <Text fontSize={15} color={"green.600"} pl={3} mt={3}>
-                  {store.products.discount}% off (saved ₹{savemoney})
+                  {store.discount}% off (saved ₹{savemoney})
                 </Text>
               ) : (
                 ""

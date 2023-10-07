@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Banners({ image }) {
   return (
-    <Box m={"auto"} w={{ sm: "90%", lg: "80%" }} mb={20}>
+    <Box m={"auto"} w={{ sm: "90%", lg: "80%" }} mb={5}>
       <Image src={image} m={"auto"} />
     </Box>
   );

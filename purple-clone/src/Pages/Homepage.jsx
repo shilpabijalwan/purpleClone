@@ -8,6 +8,12 @@ import Carousel from "../Components/Carousel";
 import axios from "axios";
 import FeaturedProducts from "../Components/FeaturedProducts";
 import Banners from "../Components/Banners";
+import SmallImg from "../Images/SmallImg";
+import Carousel2 from "../Components/Carousel2";
+import Carousel3 from "../Components/Carousel3";
+import GridImages from "../Components/GridImages";
+import DataFetched from "../FetchData/DataFetched";
+import { featuredUrl } from "../Components/Urls/url";
 
 export default function Homepage() {
   const [AppBar, SetAppBar] = useState(true);
@@ -23,7 +29,26 @@ export default function Homepage() {
           "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/misc/1680602964_1280x272-web.jpg"
         }
       />
-      <FeaturedProducts />
+      <FeaturedProducts url={featuredUrl} />
+      <SmallImg />
+      <Carousel2 />
+      <Banners
+        image={
+          "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/misc/1695795455_artboard-1-copy-4-2.jpg"
+        }
+      />
+      <Banners
+        image={
+          "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/promo/1695892046_ag_without-time.jpg"
+        }
+      />
+      <Banners
+        image={
+          "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/promo/1695892015_ag_b1g1_copy_1-2560x800.jpeg"
+        }
+      />
+      <Carousel3 />
+      <GridImages />
       <Footer />
     </>
   );
