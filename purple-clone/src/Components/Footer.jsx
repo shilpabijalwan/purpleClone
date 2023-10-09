@@ -3,8 +3,10 @@ import {
   Box,
   Center,
   Divider,
+  Flex,
   Grid,
   GridItem,
+  HStack,
   Heading,
   Hide,
   Image,
@@ -12,7 +14,9 @@ import {
   Stack,
   Text,
   VStack,
+  border,
 } from "@chakra-ui/react";
+
 import React from "react";
 import { footerimgs } from "../Images/FooterImages";
 import { wrap } from "framer-motion";
@@ -22,10 +26,12 @@ export default function Footer() {
     <>
       <Hide below="sm">
         <Grid
+          // border={"1px solid blue"}
+          key={Math.random(100 * 10)}
           color={"#363945"}
           templateColumns={"repeat(3, 1fr)"}
           // gap={6}
-          // border={"1px solid pink"}
+
           gap={{ base: 2, sm: "3", md: "4", lg: "6", xl: 6, "2xl": 6 }}
           w={{
             base: "100%",
@@ -35,12 +41,12 @@ export default function Footer() {
             xl: "80%",
             "2xl": "80%",
           }}
-          // border={"1px solid blue"}
           m={"auto"}
+          mt={10}
           textAlign={"center"}>
           {footerimgs.map((ele) => (
             <>
-              <Box boxShadow={"md"} px={3} py={3}>
+              <Box boxShadow={"md"} px={1} py={3}>
                 <Image src={ele.img} m={"auto"} />
                 <br />
                 <Link
@@ -56,50 +62,40 @@ export default function Footer() {
         </Grid>
       </Hide>
       {/* ***************************************** */}
-      <Stack
-        gap={6}
+      <Flex
         // border={"1px solid black"}
         bg={"#F4F6F5"}
-        direction={"row"}
-        m={"auto"}
+        direction={{ base: "column", md: "row" }}
+        spacing={{ base: 4, md: 10 }}
         mt={5}
-        p={{ base: 0, md: 4 }}
-        justifyContent={"space-around"}
+        justifyContent={"space-between"}
         pt={2}
-        pb={3}
-        flexWrap={"wrap"}
-        width={"100%"}>
-        <Box w={{ base: "400px", md: "400px" }}>
+        pb={3}>
+        <Box width={{ base: "300px", md: "30%" }} m={"auto"}>
           <Text fontSize={25} pb={2}>
             Spotlight
           </Text>
 
           <iframe
-            width={"400px"}
+            width={{ base: "100%", md: "100%" }}
             height="200"
             src="https://www.youtube.com/embed/NrI9d0XiP7M"
             title="How to find perfect foundation for your skin tone Ft. Purplle"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
-          {/* </AspectRatio> */}
         </Box>
-        <Box>
+        <Box width={{ base: "300px", md: "400px" }} m={"auto"}>
           <Text pb={2} fontSize={25}>
             Shop on the go
           </Text>
-          {/* <AspectRatio maxW="560px" ratio={1}> */}
-          <iframe
-            width="400px"
-            height="200"
-            src="https://www.youtube.com/embed/NrI9d0XiP7M"
-            title="How to find perfect foundation for your skin tone Ft. Purplle"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-          {/* </AspectRatio> */}
+
+          <Image
+            width={{ base: "100%", sm: "100%", md: "90%" }}
+            src="https://document-export.canva.com/smf3M/DAFu7ismf3M/11/thumbnail/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20230923%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230923T200635Z&X-Amz-Expires=5897&X-Amz-Signature=ff1f126566150f63e117b35870b25504b8b3cb20ccd81baa74925baa42876b69&X-Amz-SignedHeaders=host&response-expires=Sat%2C%2023%20Sep%202023%2021%3A44%3A52%20GMT"
+          />
         </Box>
-      </Stack>
+      </Flex>
       {/* *********************************************** */}
       <Box
         w={"85%"}
@@ -321,7 +317,7 @@ export default function Footer() {
           </Link>
         </Box>
       </Grid>
-
+      <Divider />
       <Stack
         direction={{ base: "column", md: "row" }}
         // border={"1px solid blue"}
@@ -394,6 +390,7 @@ export default function Footer() {
           </Box>
         </Box>
       </Stack>
+
       <Box width={"70%"} m={"auto"} mb={2}>
         <Text>Copyright © 2020 Purplle. All Rights Reserved.</Text>
       </Box>

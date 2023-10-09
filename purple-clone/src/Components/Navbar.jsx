@@ -32,14 +32,12 @@ import {
 
 import PopOver from "./PopoverContent";
 import { Link } from "react-router-dom";
-import SearchBar from "./SearchBar";
 
 export default function Navbar({ appbar }) {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Box
-      bg={"white"}
       zIndex={4}
       position={"sticky"}
       w="100%"
@@ -91,7 +89,7 @@ export default function Navbar({ appbar }) {
           // border={"1px solid black"}
         >
           <Image
-            src="Untitled design (1).png"
+            src="https://document-export.canva.com/2akXM/DAFth62akXM/8/thumbnail/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20230919%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230919T214907Z&X-Amz-Expires=85683&X-Amz-Signature=b1ebd66c8fa8d37782d369bab53a5afb8b5d9140e11ae884dcd3d82753b99eb2&X-Amz-SignedHeaders=host&response-expires=Wed%2C%2020%20Sep%202023%2021%3A37%3A10%20GMT"
             h={50}
             // border={"1px solid black"}
           />
@@ -170,7 +168,7 @@ export default function Navbar({ appbar }) {
 // **********************************2nd***************************
 const DesktopNav = () => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
-  const popoverContentBgColor = useColorModeValue("white", "gray.800");
+  const popoverContentBgColor = useColorModeValue("#EFF0FA");
 
   return (
     <>
@@ -186,6 +184,7 @@ const DesktopNav = () => {
         }}
         direction={"row"}
         spacing={{ base: 3, sm: 3, md: 3, lg: 3, xl: 10, "2xl": 10 }}
+
         // border={"1px solid black"}
       >
         {NAV_ITEMS.map((navItem) => (
