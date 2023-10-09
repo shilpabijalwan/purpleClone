@@ -15,12 +15,12 @@ export default function GridImages() {
     });
   }, []);
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <Grid
-      border={"1px solid blue"}
-      templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}
+      // border={"1px solid blue"}
+      templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(2, 1fr)" }}
       m={"auto"}
       w={{ base: "90%", md: "80%" }}>
       {data.map((ele, i) => (

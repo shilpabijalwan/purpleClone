@@ -13,7 +13,7 @@ export default function SmallImg() {
     <Box
       //   border={"1px solid blue"}
       display={"flex"}
-      w={"85%"}
+      w={{ md: "85%" }}
       m={"auto"}
       mt={10}
       justifyContent={"space-around"}>

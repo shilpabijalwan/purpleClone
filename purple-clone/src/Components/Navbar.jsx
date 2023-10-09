@@ -32,14 +32,12 @@ import {
 
 import PopOver from "./PopoverContent";
 import { Link } from "react-router-dom";
-import SearchBar from "./SearchBar";
 
 export default function Navbar({ appbar }) {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Box
-      bg={"white"}
       zIndex={4}
       position={"sticky"}
       w="100%"
@@ -170,7 +168,7 @@ export default function Navbar({ appbar }) {
 // **********************************2nd***************************
 const DesktopNav = () => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
-  const popoverContentBgColor = useColorModeValue("white", "gray.800");
+  const popoverContentBgColor = useColorModeValue("#EFF0FA");
 
   return (
     <>
@@ -186,6 +184,7 @@ const DesktopNav = () => {
         }}
         direction={"row"}
         spacing={{ base: 3, sm: 3, md: 3, lg: 3, xl: 10, "2xl": 10 }}
+
         // border={"1px solid black"}
       >
         {NAV_ITEMS.map((navItem) => (

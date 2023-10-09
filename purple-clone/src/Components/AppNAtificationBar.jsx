@@ -26,7 +26,7 @@ export default function AppNAtificationBar({ appbar }) {
       width={"100%"}
       border={"1px solid gray"}
       py={1}
-      bg={"pink.100"}>
+      bg={"#D7D4EC"}>
       <Image
         src={"Untitled design.png"}
         alt=""

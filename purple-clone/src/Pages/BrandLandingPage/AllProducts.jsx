@@ -18,6 +18,7 @@ import GenricCompo from "./GenericComp";
 
 import { useDispatch, useSelector } from "react-redux";
 import { GET_SWISS_DATA } from "../../Redux/SwissBeauty/action";
+import SwissAllProduct from "./SwissAllProduct";
 
 export default function AllProducts() {
   const dispatch = useDispatch();
@@ -161,6 +162,19 @@ export default function AllProducts() {
             )
           )}
         </Slider>
+      </Box>
+      <Box
+        // border={"1px solid pink"}
+        width={"100%"}
+        textAlign={"center"}
+        mt={10}
+        mb={10}>
+        <Text fontWeight={"bold"} textColor={"blue.700"} fontSize={20}>
+          SHOP ALL PRODUCTS
+        </Text>
+      </Box>
+      <Box border={"1px sloid blue"}>
+        <SwissAllProduct />
       </Box>
     </Box>
   );

@@ -4,7 +4,8 @@ import { BsHeart } from "react-icons/bs";
 export default function AddToWishList({ varient, text, size, px }) {
   return (
     <Button
-      px={px}
+   
+      px={16}
       variant={varient}
       size={size}
       // border={"1px solid pink"}

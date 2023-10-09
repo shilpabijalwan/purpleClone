@@ -14,14 +14,15 @@ import AddToCart from "../../Components/AddToCart";
 import WishList from "../../Components/AddToWishList";
 
 const truncate = (input) =>
-  input.length > 5 ? `${input.substring(0, 60)}...` : input;
+  input?.length > 5 ? `${input.substring(0, 60)}...` : input;
 
 export default function GenricCompo({ data }) {
   // console.log(data);
 
   const [showTruncate, setShowTruncate] = useState(true);
+
   const [actualdata, setActualdata] = useState();
-  // console.log(actualdata);
+
   const [savemoney, setSavemoney] = useState();
 
   const discountPrice = (discountvalue, price) => {

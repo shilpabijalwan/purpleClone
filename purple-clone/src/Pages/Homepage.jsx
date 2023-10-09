@@ -15,6 +15,11 @@ import GridImages from "../Components/GridImages";
 import DataFetched from "../FetchData/DataFetched";
 import { featuredUrl } from "../Components/Urls/url";
 
+import BestSaller from "../Components/BestSaller";
+import AllHeading from "../Components/AllHeading";
+import CataStory from "../Components/CataStory";
+import TrandingNow from "../Components/WhatareyouLookin";
+
 export default function Homepage() {
   const [AppBar, SetAppBar] = useState(true);
 
@@ -29,6 +34,7 @@ export default function Homepage() {
           "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/misc/1680602964_1280x272-web.jpg"
         }
       />
+      <AllHeading text={"F E A T U R E D"} />
       <FeaturedProducts url={featuredUrl} />
       <SmallImg />
       <Carousel2 />
@@ -49,6 +55,11 @@ export default function Homepage() {
       />
       <Carousel3 />
       <GridImages />
+      <AllHeading text={"Best Sellers"} />
+      <BestSaller />
+
+      <CataStory />
+      <TrandingNow/>
       <Footer />
     </>
   );

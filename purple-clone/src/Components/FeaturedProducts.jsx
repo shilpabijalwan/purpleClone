@@ -14,17 +14,13 @@ import { useEffect } from "react";
 import DataFetched from "../FetchData/DataFetched";
 import { useState } from "react";
 import GenricComponent from "./GenricComponent";
+import AllHeading from "./AllHeading";
 import { SampleNextArrow, SamplePrevArrow } from "./Carousel";
 
-export default function FeaturedProducts({ url }) {
+export default function FeaturedProducts({ url, cart }) {
   const [data, setData] = useState([]);
 
-  // useEffect(() => {
-  //   DataFetched(featuredUrl).then((res) => {
-  //     // console.log(res.data);
-  //     setData(res.data);
-  //   });
-  // }, []);
+ 
 
   useEffect(() => {
     DataFetched(url).then((res) => {
@@ -55,15 +51,15 @@ export default function FeaturedProducts({ url }) {
       {
         breakpoint: 821,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
       {
         breakpoint: 960,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToShow: 3,
+          slidesToScroll: 3,
         },
       },
       {
@@ -83,29 +79,14 @@ export default function FeaturedProducts({ url }) {
       m={"auto"}
       // border={"1px solid blue"}
     >
-      <Heading
-        mb={1}
-        fontSize={{ base: "md", lg: "2xl" }}
-        color={"blackAlpha.700"}
-        textAlign={"center"}>
-        F E A T U R E D
-      </Heading>
-      <Box
-        w={"90%"}
-        m={"auto"}
-        // border={"1px solid red"}
-        textAlign={"center"}
-        mb={3}>
-        <Button variant={"glost"}>View All </Button>
-      </Box>
       <Box
         // border={"2px solid green"}
-        w={"80%"}
+        w={"85%"}
         m={"auto"}
-        justifyContent={"space-around"}>
+        justifyContent={"space-evenly"}>
         <Slider {...settings}>
           {data.map((ele) => (
-            <GenricComponent {...ele} key={ele.id} />
+            <GenricComponent {...ele} key={ele.id} cart={cart} />
           ))}
         </Slider>
       </Box>

@@ -13,6 +13,7 @@ export default function GenricComponent({
   discount,
   category,
   discription,
+  cart,
 }) {
   const [showTruncate, setShowTruncate] = useState(true);
   const [actualdata, setActualdata] = useState();
@@ -31,61 +32,71 @@ export default function GenricComponent({
   }, []);
 
   return (
-    <Link to={`/productdetail/${id}/${category}`} textDecoration={"none"}>
+    <
+      // boxShadow={"md"}
+    >
       <Box
         _hover={{ textDecoration: "none" }}
         key={id}
         justifyContent={"space-between"}
-        // border={"1px solid gray"}
+        // border={"1px solid black"}
         w={{ base: "95%", md: "90%" }}
         h={"360px"}
         // onClick={() => setShowTruncate(!showTruncate)}
       >
-        <Image src={image} alt="" w={"200px"} m={"auto"} />
-        <br />
-        <Box
-          mt={2}
-          // border={"1px solid red"}
-          mx={4}
-          h={"100%"}>
-          <Text fontSize={15}>
-            {showTruncate ? truncate(discription) : discription}
-          </Text>
+        <Link to={`/productdetail/${id}/${category}`} textDecoration={"none"}>
+          <Image src={image} alt="" w={"200px"} m={"auto"} />
+          <br />
           <Box
-            display={"flex"}
             mt={2}
-            px={2}
-            border={"1px solid #EBEBEB"}
-            justifyContent={"space-around"}>
-            <b>₹ {actualdata}</b>
+            // border={"1px solid red"}
+            mx={4}
+            h={"100%"}>
+            <Text fontSize={15}>
+              {showTruncate ? truncate(discription) : discription}
+            </Text>
+            <Box
+              display={"flex"}
+              mt={2}
+              px={2}
+              border={"1px solid #EBEBEB"}
+              justifyContent={"space-around"}>
+              <b>₹ {actualdata}</b>
+
+              {discount ? (
+                <del color="gray">
+                  <Text fontSize={12} mt={1}>
+                    ₹{price}
+                  </Text>
+                </del>
+              ) : (
+                ""
+              )}
+            </Box>
 
             {discount ? (
-              <del color="gray">
-                <Text fontSize={12} mt={1}>
-                  ₹{price}
-                </Text>
-              </del>
+              <Text fontSize={12} color={"green.300"} pl={3}>
+                {discount}% off
+              </Text>
+            ) : (
+              ""
+            )}
+            {discount ? (
+              <Text fontSize={12} color={"blue.300"} pl={3}>
+                you saved Rs {savemoney}
+              </Text>
             ) : (
               ""
             )}
           </Box>
-
-          {discount ? (
-            <Text fontSize={12} color={"green.300"} pl={3}>
-              {discount}% off
-            </Text>
-          ) : (
-            ""
-          )}
-          {discount ? (
-            <Text fontSize={12} color={"blue.300"} pl={3}>
-              you saved Rs {savemoney}
-            </Text>
-          ) : (
-            ""
-          )}
-        </Box>
+        </Link>
       </Box>
-    </Link>
+
+      <Box textAlign={"center"} w={"100%"} mt={5} mb={1}>
+        {cart}
+      </Box>
+
+      {/* </Box> */}
+    </>
   );
 }
