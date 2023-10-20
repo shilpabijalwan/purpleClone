@@ -7,7 +7,7 @@ export default function ALLProductGrid() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    DataFetched("https://tan-frail-hummingbird.cyclic.app/shopAllProduct").then(
+    DataFetched("https://server-sepia-tau.vercel.app/shopAllProduct").then(
       (res) => {
         setData(res.data);
       }

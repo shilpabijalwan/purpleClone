@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Discription, { DiscriptionForsmallScreen } from "./Discription";
 
 export const ProductImages = ({ imgs = [{ image: "" }] }) => {
-  console.log(imgs);
+  // console.log(imgs);
 
   const [main, setMain] = useState("");
   //   console.log(main);

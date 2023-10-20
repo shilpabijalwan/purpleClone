@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 
 import Navbar from "../Components/Navbar";
 import PageNavigation from "../Components/PageNavigation";
@@ -9,7 +9,6 @@ import PageNavigation from "../Components/PageNavigation";
 import { ProductImages } from "../Components/ProductImages";
 import Stars from "../Components/Stars";
 
-import AddToCart from "../Components/AddToCart";
 import AddToWishList from "../Components/AddToWishList";
 
 import ZipCode from "../Components/ZipCode";
@@ -19,6 +18,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Get_Product } from "../Redux/Products/action";
 
 import Spiner from "../Components/Spiner";
+
+import { AddtoCart } from "../Redux/Cart/action";
 
 export default function SingleProductPage() {
   const { id } = useParams();
@@ -39,20 +40,20 @@ export default function SingleProductPage() {
 
   const discountPrice = (discountvalue, price) => {
     let data = (discountvalue / 100) * price;
-    const ceilvalue = Math.ceil((discountvalue / 100) * price);
-    let newdata = Math.ceil(price - data);
+    const ceilvalue = Math.round((discountvalue / 100) * price);
+    let newdata = Math.round(price - data);
     setSavemoney(ceilvalue);
     setActualdata(newdata);
   };
 
   useEffect(() => {
     dispatch(Get_Product(id));
-  }, []);
-
-  useEffect(() => {
     discountPrice(store.products.discount, store.products.price);
-  }, [discountPrice]);
+  }, [store.products.price]);
 
+  const handleAdd = (data) => {
+    dispatch(AddtoCart(data));
+  };
   return isLoading ? (
     <Spiner />
   ) : (
@@ -145,7 +146,16 @@ export default function SingleProductPage() {
               // border={"1px solid blue"}
               gap={10}
               justifyContent={"space-evenly"}>
-              <AddToCart px={10} />
+              <Button
+                // px={px}
+                px={16}
+                bgColor={"#D0D2F1"}
+                color={"black"}
+                onClick={() => handleAdd(store.products)}
+                borderRadius={4}>
+                Add To Cart
+              </Button>
+
               <AddToWishList text={"WishList"} px={7} />
             </Box>
             <br />

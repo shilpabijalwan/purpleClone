@@ -1,32 +1,32 @@
-import {
-  Box,
-  Grid,
-  HStack,
-  Heading,
-  Image,
-  Stack,
-  VStack,
-} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import FeaturedProducts from "./FeaturedProducts";
+import AddToCart from "./AddToCart";
+import { Box, Grid, Heading, Image } from "@chakra-ui/react";
+import GreatDeal from "./GreatDeal";
 import DataFetched from "../FetchData/DataFetched";
 import { Link } from "react-router-dom";
 
-export default function CataStory() {
+export default function Tranding() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    DataFetched("https://server-sepia-tau.vercel.app/CATEGORY_STORES").then(
+    DataFetched("https://server-sepia-tau.vercel.app/trandingNow").then(
       (res) => {
         setData(res.data);
       }
     );
   });
-  //   console.log(data);
   return (
     <>
-      <Heading textAlign={"center"} size={"md"} mt={10} color={"gray.600"}>
-        CATEGORY STORES
+      <Heading
+        mt={10}
+        mb={5}
+        textAlign={"center"}
+        size={"md"}
+        color={"gray.600"}>
+        TRANDING NOW
       </Heading>
 
+      {/* <CataStory url={"https://server-sepia-tau.vercel.app/trandingNow"} /> */}
       <Grid
         templateColumns={{ base: "repeat(3, 1fr)", lg: "repeat(7, 1fr)" }}
         w={{ base: "90%", md: "85%" }}

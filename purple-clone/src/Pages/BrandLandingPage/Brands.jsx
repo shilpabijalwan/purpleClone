@@ -16,11 +16,11 @@ export default function Brands() {
   const { id } = useParams();
 
   useEffect(() => {
-    DataFetched(
-      `https://tan-frail-hummingbird.cyclic.app/grid_Brands/${id}`
-    ).then((res) => {
-      setData(res.data);
-    });
+    DataFetched(`https://server-sepia-tau.vercel.app/grid_Brands/${id}`).then(
+      (res) => {
+        setData(res.data);
+      }
+    );
   }, []);
   // console.log(data);
 

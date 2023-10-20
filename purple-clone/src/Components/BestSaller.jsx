@@ -6,7 +6,7 @@ export default function BestSaller() {
   return (
     <>
       <FeaturedProducts
-        url={"https://tan-frail-hummingbird.cyclic.app/best_sellers"}
+        url={"https://server-sepia-tau.vercel.app/best_sellers"}
         cart={<AddToCart />}
       />
     </>

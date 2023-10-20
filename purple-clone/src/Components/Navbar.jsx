@@ -22,6 +22,7 @@ import {
   Grid,
   VStack,
   Input,
+  Center,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -32,8 +33,14 @@ import {
 
 import PopOver from "./PopoverContent";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Navbar({ appbar }) {
+  const count = useSelector((data) => {
+    return data.cartReduced.cart.length;
+  });
+  console.log(count);
+
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -108,12 +115,12 @@ export default function Navbar({ appbar }) {
             xl: "900px", // ~1280px
             "2xl": "900px",
           }}
-          // border={"3px solid blue"}
+          // border={"1px solid blue"}
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
           direction={"row"}
-          spacing={3}>
-          <Link to={"wishlist"}>
+          spacing={{ base: 10, md: 5 }}>
+          <Link to={"/wishlist"}>
             <Text
               display={{ base: "none", md: "inline-flex" }}
               fontSize={{
@@ -129,19 +136,38 @@ export default function Navbar({ appbar }) {
               <BsHeart />
             </Text>
           </Link>
+          <Link to={"/cart"}>
+            <Text
+              display={{ md: "inline-flex" }}
+              fontSize={{
+                base: "23px", // 0px
+                sm: "23px", // ~480px. em is a relative unit and is dependant on the font-size.
+                md: "23px", // ~768px imp
+                lg: "30px", // ~992px
+                xl: "35px", // ~1280px
+                "2xl": "35px",
+              }}>
+              <BsCart2 />
+              {count ? (
+                <Box
+                  ml={4}
+                  w={6}
+                  h={6}
+                  position={"absolute"}
+                  top={2}
+                  fontSize={10}
+                  bg={"#E2D3EE"}
+                  textAlign={"center"}
+                  pt={1}
+                  borderRadius={"50px"}>
+                  <b>{count}</b>
+                </Box>
+              ) : (
+                ""
+              )}
+            </Text>
+          </Link>
 
-          <Text
-            display={{ md: "inline-flex" }}
-            fontSize={{
-              base: "23px", // 0px
-              sm: "23px", // ~480px. em is a relative unit and is dependant on the font-size.
-              md: "23px", // ~768px imp
-              lg: "30px", // ~992px
-              xl: "35px", // ~1280px
-              "2xl": "35px",
-            }}>
-            <BsCart2 />
-          </Text>
           <Text
             // as={"a"}
             display={{ md: "inline-flex" }}
@@ -151,7 +177,6 @@ export default function Navbar({ appbar }) {
               md: "23px", // ~768px imp
               lg: "30px", // ~992px
               xl: "35px", // ~1280px
-              "2xl": "35px",
             }}>
             <BsEmojiSmile />
           </Text>
@@ -215,7 +240,6 @@ const DesktopNav = () => {
 
               {navItem.children && (
                 <PopoverContent
-                  // border={"1px solid black"}
                   boxShadow={"xl"}
                   bg={popoverContentBgColor}
                   minW={"4xl"}

@@ -14,19 +14,17 @@ import { useEffect } from "react";
 import DataFetched from "../FetchData/DataFetched";
 import { useState } from "react";
 import GenricComponent from "./GenricComponent";
-import AllHeading from "./AllHeading";
+
 import { SampleNextArrow, SamplePrevArrow } from "./Carousel";
 
 export default function FeaturedProducts({ url, cart }) {
   const [data, setData] = useState([]);
 
- 
-
   useEffect(() => {
     DataFetched(url).then((res) => {
       // console.log(res.data);
       setData(res.data);
-      console.log(data);
+      // console.log(data);
     });
   }, []);
 

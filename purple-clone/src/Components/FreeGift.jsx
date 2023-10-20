@@ -1,30 +1,28 @@
-import {
-  Box,
-  Grid,
-  HStack,
-  Heading,
-  Image,
-  Stack,
-  VStack,
-} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+
+import { Box, Grid, Heading, Image } from "@chakra-ui/react";
+
 import DataFetched from "../FetchData/DataFetched";
 import { Link } from "react-router-dom";
 
-export default function CataStory() {
+export default function FreeGift() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    DataFetched("https://server-sepia-tau.vercel.app/CATEGORY_STORES").then(
+    DataFetched("https://server-sepia-tau.vercel.app/FREE_GIFT_OFFERS").then(
       (res) => {
         setData(res.data);
       }
     );
   });
-  //   console.log(data);
   return (
     <>
-      <Heading textAlign={"center"} size={"md"} mt={10} color={"gray.600"}>
-        CATEGORY STORES
+      <Heading
+        mt={10}
+        mb={5}
+        textAlign={"center"}
+        size={"md"}
+        color={"gray.600"}>
+        FREE GIFT OFFERS
       </Heading>
 
       <Grid
@@ -37,7 +35,7 @@ export default function CataStory() {
         {data.map((ele) => (
           <Link to={"#"}>
             <Box>
-              <Image src={ele.image} />
+              <Image src={ele.image} borderRadius={"50"} />
             </Box>
           </Link>
         ))}

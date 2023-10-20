@@ -19,6 +19,14 @@ import BestSaller from "../Components/BestSaller";
 import AllHeading from "../Components/AllHeading";
 import CataStory from "../Components/CataStory";
 import TrandingNow from "../Components/WhatareyouLookin";
+import LimitedHour from "../Components/LimitedHour";
+import ComboDeals from "../Components/ComboDeals";
+import GreatDeal from "../Components/GreatDeal";
+import BugetBuy from "../Components/BugetBuy";
+import FreeGift from "../Components/FreeGift";
+import LOVEDbrand from "../Components/LOVEDbrand";
+import Tranding from "../Components/Tranding";
+import BODYCare from "../Components/BODYCare";
 
 export default function Homepage() {
   const [AppBar, SetAppBar] = useState(true);
@@ -53,13 +61,45 @@ export default function Homepage() {
           "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/promo/1695892015_ag_b1g1_copy_1-2560x800.jpeg"
         }
       />
+
       <Carousel3 />
+
+      <LimitedHour />
+
       <GridImages />
       <AllHeading text={"Best Sellers"} />
       <BestSaller />
 
       <CataStory />
-      <TrandingNow/>
+      <TrandingNow />
+
+      <ComboDeals />
+
+      <GreatDeal
+        text={"BRANDS WITH GREAT DEALS"}
+        url={"https://server-sepia-tau.vercel.app/BRANDS_WITH_GREAT_DEALS"}
+      />
+      <BugetBuy />
+
+      <LOVEDbrand />
+      <Tranding />
+      <FreeGift />
+      <BODYCare />
+      <br />
+      <br />
+      <Banners
+        image={
+          "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/misc/1695729045_discover-all-products-web.jpg"
+        }
+      />
+      <br />
+      <br />
+      <Banners
+        image={
+          "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/misc/1662556480_benefit-icons-strip-web.jpg"
+        }
+      />
+      <br />
       <Footer />
     </>
   );

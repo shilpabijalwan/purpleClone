@@ -5,12 +5,14 @@ import MyWishList from "../Pages/MyWishList";
 import SingleProductPage from "../Pages/SingleProductPage";
 import Brands from "../Pages/BrandLandingPage/Brands";
 import BrandSinglePage from "../Pages/BrandLandingPage/BrandSinglePage";
+import CartPage from "../Pages/CartPage/CartPage";
 
 export default function MAinRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/wishlist" element={<MyWishList />} />
+      <Route path="/cart" element={<CartPage />} />
       <Route
         path="/productdetail/:id/:category"
         element={<SingleProductPage />}

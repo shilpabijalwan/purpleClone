@@ -51,11 +51,11 @@ export default function Carousel3() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    DataFetched(
-      "https://tan-frail-hummingbird.cyclic.app/carouselImages3"
-    ).then((data) => {
-      setData(data.data);
-    });
+    DataFetched("https://server-sepia-tau.vercel.app/carouselImages3").then(
+      (data) => {
+        setData(data.data);
+      }
+    );
   }, []);
   const settings = {
     nextArrow: <SampleNextArrow />,
