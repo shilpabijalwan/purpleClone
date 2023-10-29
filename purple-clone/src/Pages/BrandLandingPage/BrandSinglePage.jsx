@@ -20,6 +20,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Spiner from "../../Components/Spiner";
 
 import { GET_Single_SWISS_DATA } from "../../Redux/SwissBeauty/action";
+import { AddtoCart } from "../../Redux/Cart/action";
+import { Add_To_WishList } from "../../Redux/Wishlist/action";
 
 export default function BrandSinglePage() {
   const { id } = useParams();
@@ -58,8 +60,15 @@ export default function BrandSinglePage() {
 
   useEffect(() => {
     discountPrice(store.discount, store.price);
-  }, [discountPrice]);
+  }, []);
 
+  const handleAdd = (data) => {
+    dispatch(AddtoCart(data));
+  };
+
+  const handlewishlist = (data) => {
+    dispatch(Add_To_WishList(data));
+  };
   return isLoading ? (
     <Spiner />
   ) : (
@@ -139,18 +148,22 @@ export default function BrandSinglePage() {
             <br />
             <Box
               display={"flex"}
-              // border={"1px solid blue"}
+              border={"1px solid blue"}
               gap={10}
               justifyContent={"space-evenly"}>
-              <AddToCart px={10} />
-              <AddToWishList text={"WishList"} px={7} />
+              <AddToCart px={20} handleAdd={() => handleAdd(store)} />
+              <AddToWishList
+                text={"WishList"}
+                px={20}
+                handlewishlist={() => handlewishlist(store)}
+              />
             </Box>
             <br />
             <ZipCode />
           </Box>
         </Flex>
       </Box>
-
+      s
       <Footer />
     </>
   );

@@ -2,7 +2,7 @@ import { Button, Flex } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
 
-export default function Buttons() {
+export default function Buttons({ text }) {
   const data = useSelector((res) => {
     return res.cartReduced;
   });
@@ -16,7 +16,7 @@ export default function Buttons() {
   return (
     <Flex w={"250px"} gap={1} pb={1}>
       <Button onClick={() => handleRemove}>Remove</Button>
-      <Button>Move To Wishlist</Button>
+      <Button>{text}</Button>
     </Flex>
   );
 }

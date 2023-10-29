@@ -12,6 +12,8 @@ import { useSelector } from "react-redux";
 import { HiOutlineInformationCircle } from "react-icons/hi";
 import { BiRupee } from "react-icons/bi";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
+import CartFooter from "./CartFooter";
+import Fixedbox from "./Fixedbox";
 
 export default function PriceDetail() {
   const Shipping = 50;
@@ -52,7 +54,7 @@ export default function PriceDetail() {
 
   return (
     <>
-      <Box mt={6} border={"1px solid gray"} px={5} py={5}>
+      <Box mt={6} px={5} py={5} mb={5}>
         <Text fontSize={20} fontWeight="bold" mb={3}>
           Price Details
         </Text>
@@ -108,7 +110,15 @@ export default function PriceDetail() {
           <Spacer />
           <b>₹ {SubTotal <= 499 ? SubTotal + Shipping : SubTotal}</b>
         </Flex>
+        <Box mb={20}>
+          <CartFooter />
+        </Box>
       </Box>
+
+      <Fixedbox
+        total={SubTotal <= 499 ? SubTotal + Shipping : SubTotal}
+        save={savemoney}
+      />
     </>
   );
 }

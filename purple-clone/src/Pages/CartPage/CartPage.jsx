@@ -18,6 +18,9 @@ import Buttons from "./Buttons";
 import PriceDetail from "./PriceDetail";
 import Details from "./Details";
 import EmpyCartMsg from "./EmpyCartMsg";
+import CartFooter from "./CartFooter";
+import ZipCode from "../../Components/ZipCode";
+import AddToWishList from "../../Components/AddToWishList";
 
 export default function CartPage() {
   const data = useSelector((data) => {
@@ -29,27 +32,33 @@ export default function CartPage() {
   const cartdata = data.cart;
   // console.log(cartdata);
 
-  return isLoading ? (
-    <Spiner />
-  ) : (
+  return (
     <>
       <Navbar />
       {cartdata.length ? (
-        <Box w={{ base: "95%", md: "77%", lg: "55%" }} m={"auto"} mt={10}>
-          <Stack direction="row" gap={10} mb={10}>
+        <Box
+          w={{ base: "95%", md: "77%", lg: "55%" }}
+          m={"auto"}
+          mt={10}
+          boxShadow={"2xl"}>
+          <Stack direction="row" gap={10} mb={10} pt={10} pl={5}>
             <Link to={"/"}>
               <Heading size={"lg"}>
                 <ArrowBackIcon />
               </Heading>
             </Link>
             <Heading size={"lg"} color={"#3D4266"}>
-              My Cart
+              My Cart<span> ({cartdata.length})</span>
             </Heading>
           </Stack>
 
-          <Box py={3} boxShadow={"2xl"} px={5}>
+          <Box py={3} px={5}>
             {data.cart.map((ele) => (
-              <Details {...ele} key={ele.id} />
+              <Details
+                {...ele}
+                key={ele.id}
+                text={<AddToWishList text={"Add to Wishlist"} px={5} />}
+              />
             ))}
           </Box>
           <PriceDetail />
@@ -57,6 +66,8 @@ export default function CartPage() {
       ) : (
         <EmpyCartMsg />
       )}
+      {/* <CartFooter /> */}
+      {/* <ZipCode /> */}
     </>
   );
 }

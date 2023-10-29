@@ -5,7 +5,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
@@ -13,16 +12,8 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
   Image,
-  Img,
-  List,
-  ListItem,
-  Grid,
-  VStack,
-  Input,
-  Center,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -39,7 +30,7 @@ export default function Navbar({ appbar }) {
   const count = useSelector((data) => {
     return data.cartReduced.cart.length;
   });
-  console.log(count);
+  // console.log(count);
 
   const { isOpen, onToggle } = useDisclosure();
 
@@ -50,6 +41,7 @@ export default function Navbar({ appbar }) {
       w="100%"
       top={appbar ? "60px" : 0}
       m={"auto"}
+      bg={"white"}
       border={{
         base: "2px solid red", // 0px
         sm: "2px solid gray", // ~480px. em is a relative unit and is dependant on the font-size.
@@ -96,7 +88,7 @@ export default function Navbar({ appbar }) {
           // border={"1px solid black"}
         >
           <Image
-            src="https://document-export.canva.com/2akXM/DAFth62akXM/8/thumbnail/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20230919%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230919T214907Z&X-Amz-Expires=85683&X-Amz-Signature=b1ebd66c8fa8d37782d369bab53a5afb8b5d9140e11ae884dcd3d82753b99eb2&X-Amz-SignedHeaders=host&response-expires=Wed%2C%2020%20Sep%202023%2021%3A37%3A10%20GMT"
+            src="https://document-export.canva.com/2akXM/DAFth62akXM/8/thumbnail/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20231027%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231027T214907Z&X-Amz-Expires=89283&X-Amz-Signature=db451b467a4a79e61357138fd31a956da2a2ae7df70bec217e4efa87c10d228f&X-Amz-SignedHeaders=host&response-expires=Sat%2C%2028%20Oct%202023%2022%3A37%3A10%20GMT"
             h={50}
             // border={"1px solid black"}
           />

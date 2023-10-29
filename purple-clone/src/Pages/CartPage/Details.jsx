@@ -3,14 +3,7 @@ import React, { useEffect, useState } from "react";
 import QtyInput from "./QtyInput";
 import Buttons from "./Buttons";
 
-export default function Details({
-  id,
-  image,
-  category,
-  price,
-  description,
-  discount,
-}) {
+export default function Details({ id, image, category, price, description, discount, text }) {
   const [savemoney, setSavemoney] = useState();
   const [actualdata, setActualdata] = useState();
 
@@ -47,15 +40,21 @@ export default function Details({
       <Box pt={1} pl={4} bg={"#F0F3FA"} width={"85%"}>
         <Text>{category}</Text>
 
-        <Flex gap={10} mt={4} pr={2}>
+        <Flex gap={7} mt={4} pr={2}>
           <Heading size={"md"}>₹{actualdata}</Heading>
 
           {discount ? (
             <del color="gray">
-              <Text fontSize={15} mt={1}>
-                ₹{price}
-              </Text>
+              <Text fontSize={15}>₹{price}</Text>
             </del>
+          ) : (
+            ""
+          )}
+          {discount ? (
+            <span
+              style={{ color: "green", fontSize: "14px", marginTop: "2px" }}>
+              {discount}% off
+            </span>
           ) : (
             ""
           )}
@@ -65,7 +64,7 @@ export default function Details({
 
         <Flex mt={1}>
           <Spacer />
-          <Buttons />
+          <Buttons text={text} />
         </Flex>
       </Box>
     </Box>

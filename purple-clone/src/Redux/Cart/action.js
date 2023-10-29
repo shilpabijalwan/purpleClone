@@ -6,9 +6,8 @@ import {
   GetCartRequest,
   GetCartSuccess,
 } from "./actionTypes";
-import AddToCart from "../../Components/AddToCart";
 
-export const cart = (id) => (dispatch) => {
+export const cart = () => (dispatch) => {
   dispatch({ type: GetCartRequest });
   axios
     .get()

@@ -1,16 +1,24 @@
 import { Button, Text } from "@chakra-ui/react";
 import React from "react";
 import { BsHeart } from "react-icons/bs";
-export default function AddToWishList({ varient, text, size, px }) {
+
+export default function AddToWishList({
+  varient,
+  text,
+  size,
+  px,
+  w,
+  handlewishlist,
+}) {
   return (
     <Button
-   
-      px={16}
+      px={px}
+      w={w}
       variant={varient}
       size={size}
       // border={"1px solid pink"}
-    >
-      <Text display={"flex"} gap={5}>
+      onClick={handlewishlist}>
+      <Text display={"flex"} gap={3}>
         <BsHeart size={25} />
         {text}
       </Text>

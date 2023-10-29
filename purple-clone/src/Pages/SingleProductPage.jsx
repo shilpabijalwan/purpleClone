@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Text,
+  Toast,
+  useToast,
+} from "@chakra-ui/react";
 
 import Navbar from "../Components/Navbar";
 import PageNavigation from "../Components/PageNavigation";
@@ -20,8 +28,12 @@ import { Get_Product } from "../Redux/Products/action";
 import Spiner from "../Components/Spiner";
 
 import { AddtoCart } from "../Redux/Cart/action";
+import { Add_To_WishList } from "../Redux/Wishlist/action";
+
+import AddToCart from "../Components/AddToCart";
 
 export default function SingleProductPage() {
+  const toast = useToast();
   const { id } = useParams();
   // console.log(id);
   const dispatch = useDispatch();
@@ -51,9 +63,26 @@ export default function SingleProductPage() {
     discountPrice(store.products.discount, store.products.price);
   }, [store.products.price]);
 
+  function Toast(title) {
+    return toast({
+      title: title,
+      description: "Product Added To Cart.",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
+  }
+
   const handleAdd = (data) => {
     dispatch(AddtoCart(data));
+    Toast("Add to Cart");
   };
+
+  const handlewishlist = (data) => {
+    dispatch(Add_To_WishList(data));
+    Toast("Add to Wishlist");
+  };
+
   return isLoading ? (
     <Spiner />
   ) : (
@@ -146,17 +175,13 @@ export default function SingleProductPage() {
               // border={"1px solid blue"}
               gap={10}
               justifyContent={"space-evenly"}>
-              <Button
-                // px={px}
-                px={16}
-                bgColor={"#D0D2F1"}
-                color={"black"}
-                onClick={() => handleAdd(store.products)}
-                borderRadius={4}>
-                Add To Cart
-              </Button>
+              <AddToCart handleAdd={() => handleAdd(store.products)} px={20} />
 
-              <AddToWishList text={"WishList"} px={7} />
+              <AddToWishList
+                text={"WishList"}
+                px={20}
+                handlewishlist={() => handlewishlist(store.products)}
+              />
             </Box>
             <br />
             <ZipCode />
