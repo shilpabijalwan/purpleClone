@@ -22,9 +22,7 @@ export default function FeaturedProducts({ url, cart }) {
 
   useEffect(() => {
     DataFetched(url).then((res) => {
-      // console.log(res.data);
       setData(res.data);
-      // console.log(data);
     });
   }, []);
 

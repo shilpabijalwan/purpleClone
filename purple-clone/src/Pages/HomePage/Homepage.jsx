@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 import AppNAtificationBar from "../../Components/AppNAtificationBar";
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Image, Spinner } from "@chakra-ui/react";
 import SearchBar from "../../Components/SearchBar";
 import Carousel from "../../Components/Carousel";
 import axios from "axios";
@@ -27,14 +27,23 @@ import FreeGift from "../../Components/FreeGift";
 import LOVEDbrand from "../../Components/LOVEDbrand";
 import Tranding from "../../Components/Tranding";
 import BODYCare from "../../Components/BODYCare";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Homepage() {
   const [AppBar, SetAppBar] = useState(true);
+
+  const store = useSelector((res) => {
+    return res.GridReducer;
+  });
+  // console.log(store);
+  const isLoading = store.isLoading;
+  // console.log(isLoading);
 
   return (
     <>
       {AppBar ? <AppNAtificationBar appbar={SetAppBar} /> : ""}
       <Navbar appbar={AppBar} />
+
       <SearchBar />
       <Carousel />
       <Banners
@@ -65,7 +74,6 @@ export default function Homepage() {
       <Carousel3 />
 
       <LimitedHour />
-
       <GridImages />
       <AllHeading text={"Best Sellers"} />
       <BestSaller />
@@ -99,6 +107,7 @@ export default function Homepage() {
           "https://media6.ppl-media.com/tr:w-1280,c-at_max,pr-true,dpr-2/mediafiles/ecomm/misc/1662556480_benefit-icons-strip-web.jpg"
         }
       />
+
       <br />
       <Footer />
     </>

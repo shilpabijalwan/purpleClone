@@ -14,7 +14,7 @@ import Footer from "../../Components/Footer";
 export default function End() {
   return (
     <>
-      <Navbar />
+      <Navbar display={"none"} />
       <Stack
         w={"85%"}
         m="auto"

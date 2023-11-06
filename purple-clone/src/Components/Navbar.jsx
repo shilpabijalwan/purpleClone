@@ -1,5 +1,5 @@
 import React from "react";
-import { BsHeart, BsCart2, BsEmojiSmile } from "react-icons/bs";
+import { BsHeart, BsCart2 } from "react-icons/bs";
 import {
   Box,
   Flex,
@@ -25,14 +25,15 @@ import {
 import PopOver from "./PopoverContent";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import MyModal from "./Modal/Modal";
 
-export default function Navbar({ appbar }) {
+export default function Navbar({ appbar, display }) {
+  const { isOpen, onToggle } = useDisclosure();
+
   const count = useSelector((data) => {
     return data.cartReduced.cart.length;
   });
   // console.log(count);
-
-  const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Box
@@ -82,17 +83,19 @@ export default function Navbar({ appbar }) {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
+
         <Flex
           flex={{ base: 1 }}
           justify={{ base: "center", md: "start" }}
           // border={"1px solid black"}
         >
-          <Image
-            src="https://document-export.canva.com/2akXM/DAFth62akXM/8/thumbnail/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20231027%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231027T214907Z&X-Amz-Expires=89283&X-Amz-Signature=db451b467a4a79e61357138fd31a956da2a2ae7df70bec217e4efa87c10d228f&X-Amz-SignedHeaders=host&response-expires=Sat%2C%2028%20Oct%202023%2022%3A37%3A10%20GMT"
-            h={50}
-            // border={"1px solid black"}
-          />
-
+          <Link to={"/"}>
+            <Image
+              src="https://document-export.canva.com/2akXM/DAFth62akXM/8/thumbnail/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20231027%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231027T214907Z&X-Amz-Expires=89283&X-Amz-Signature=db451b467a4a79e61357138fd31a956da2a2ae7df70bec217e4efa87c10d228f&X-Amz-SignedHeaders=host&response-expires=Sat%2C%2028%20Oct%202023%2022%3A37%3A10%20GMT"
+              h={50}
+              // border={"1px solid black"}
+            />
+          </Link>
           <Flex display={{ base: "none", md: "flex" }} m={"auto"}>
             <DesktopNav />
           </Flex>
@@ -151,7 +154,8 @@ export default function Navbar({ appbar }) {
                   bg={"#E2D3EE"}
                   textAlign={"center"}
                   pt={1}
-                  borderRadius={"50px"}>
+                  borderRadius={"50px"}
+                  display={display}>
                   <b>{count}</b>
                 </Box>
               ) : (
@@ -160,18 +164,7 @@ export default function Navbar({ appbar }) {
             </Text>
           </Link>
 
-          <Text
-            // as={"a"}
-            display={{ md: "inline-flex" }}
-            fontSize={{
-              base: "23px", // 0px
-              sm: "23px", // ~480px. em is a relative unit and is dependant on the font-size.
-              md: "23px", // ~768px imp
-              lg: "30px", // ~992px
-              xl: "35px", // ~1280px
-            }}>
-            <BsEmojiSmile />
-          </Text>
+          <MyModal />
         </Stack>
       </Flex>
 

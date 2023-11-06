@@ -2,10 +2,11 @@ import { Button } from "@chakra-ui/react";
 import React from "react";
 import axios from "axios";
 
-export default function AddToCart({ varient, px, size, w, handleAdd }) {
+export default function AddToCart({ pl,varient, px, size, w, handleAdd }) {
   return (
     <Button
       px={px}
+      ml={pl}
       // px={16}
       bgColor={"#D0D2F1"}
       color={"black"}

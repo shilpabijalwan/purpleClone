@@ -30,14 +30,18 @@ export default function AppNAtificationBar({ appbar }) {
       <Image
         src={"Untitled design.png"}
         alt=""
-        // h={50}
-        h={{ base: 50, sm: 10, md: 20, lg: 50, xl: 50, "2xl": 50 }}
-        w={{ base: 100 }}
+        h={"50px"}
+        w={{ base: "70px" }}
       />
-      <Flex gap={{ "2xl": 14 }} flexWrap={"wrap"}>
-        <Text pt={{ "2xl": 3 }} px={{ "2xl": 2 }} border={"3px dotted red"}>
-          Use Code :APPFIRST
+      <Flex
+        gap={{ base: 4, "2xl": 14 }}
+        flexWrap={"wrap"}
+        // border={"1px solid black"}
+      >
+        <Text border={"2px dotted red"} paddingX={2} h={"35px"} mt={2} pt={1}>
+          Use Code : APPFIRST
         </Text>
+
         <Heading pt={{ "2xl": 3 }} size={"sm"}>
           <span>⭐️⭐️</span> FLAT Rs. 100 OFF on your first order!
           <span>⭐️⭐️</span>

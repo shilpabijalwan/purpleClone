@@ -17,7 +17,7 @@ export default function ComboDeals() {
 
       <FeaturedProducts
         url={"https://server-sepia-tau.vercel.app/BestcomboDeals"}
-        cart={<AddToCart  />  }
+        cart={<AddToCart pl={5} px={16} />}
       />
     </>
   );
