@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsEmojiSmile } from "react-icons/bs";
 import {
   useDisclosure,
@@ -15,14 +15,28 @@ import {
   Input,
   Text,
 } from "@chakra-ui/react";
-
+import { Login } from "../../Redux/authentication/action";
+import { useDispatch } from "react-redux";
 export default function MyModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
 
-  const handleSubmit = () => {
-    console.log("working");
+  // const [userData, SetUserData] = useState([]);
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(Login(formData));
+    formData.name = "";
+    formData.email = "";
+    formData.password = "";
   };
 
   return (
@@ -59,17 +73,41 @@ export default function MyModal() {
               <ModalBody pb={6}>
                 <FormControl>
                   <FormLabel>Name</FormLabel>
-                  <Input ref={initialRef} placeholder="name" />
+                  <Input
+                    value={formData.name}
+                    name="name"
+                    ref={initialRef}
+                    placeholder="name"
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                  />
                 </FormControl>
 
                 <FormControl mt={4}>
                   <FormLabel>Email</FormLabel>
-                  <Input placeholder="email" type="email" />
+                  <Input
+                    value={formData.email}
+                    name="email"
+                    placeholder="email"
+                    type="email"
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
                 </FormControl>
 
                 <FormControl mt={4}>
                   <FormLabel>Password</FormLabel>
-                  <Input placeholder="password" type="password" />
+                  <Input
+                    value={formData.password}
+                    name="password"
+                    placeholder="password"
+                    type="text"
+                    onChange={(e) =>
+                      setFormData({ ...formData, password: e.target.value })
+                    }
+                  />
                 </FormControl>
               </ModalBody>
 

@@ -8,8 +8,9 @@ import { reducer as SwissReducer } from "./SwissBeauty/reducer";
 import { reducer as wishReducer } from "./Wishlist/reducer";
 import { reducer as addressReducer } from "./Address/reducer";
 import { reducer as GridReducer } from "./GridImgs/reducer";
+import { reducer as authReducer } from "./GridImgs/reducer";
 const rootReducer = combineReducers({
-  //   authReducer: authReducer,
+  authReducer: authReducer,
   productReducer: productReducer,
   wishReducer: wishReducer,
   SwissReducer: SwissReducer,

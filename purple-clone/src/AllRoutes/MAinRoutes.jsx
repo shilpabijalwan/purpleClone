@@ -36,6 +36,7 @@ export default function MAinRoutes() {
         <Route path="/checkout" element={<CheckOut />} />
       )}
       <Route path="/checkout:2" element={<BankDetails />} />
+
       <Route path="/absoluteGlam.com" element={<End />} />
     </Routes>
   );
