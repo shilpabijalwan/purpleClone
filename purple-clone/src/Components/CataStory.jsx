@@ -14,11 +14,11 @@ import { Link } from "react-router-dom";
 export default function CataStory() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    DataFetched(
-      "https://tan-frail-hummingbird.cyclic.app/CATEGORY_STORES"
-    ).then((res) => {
-      setData(res.data);
-    });
+    DataFetched("https://server-sepia-tau.vercel.app/CATEGORY_STORES").then(
+      (res) => {
+        setData(res.data);
+      }
+    );
   });
   //   console.log(data);
   return (

@@ -8,7 +8,7 @@ import {
 export const GET_SWISS_DATA = (id) => (dispatch) => {
   dispatch({ type: SWISS_PRODUCT_REQUEST });
   axios
-    .get(`https://tan-frail-hummingbird.cyclic.app/SwissBeautyProducts`)
+    .get(`https://server-sepia-tau.vercel.app/SwissBeautyProducts`)
     .then((res) => {
       dispatch({ type: SWISS_PRODUCT_SUCCESS, payload: res.data });
     })
@@ -19,7 +19,7 @@ export const GET_SWISS_DATA = (id) => (dispatch) => {
 export const GET_Single_SWISS_DATA = (id) => (dispatch) => {
   dispatch({ type: SWISS_PRODUCT_REQUEST });
   axios
-    .get(`https://tan-frail-hummingbird.cyclic.app/SwissBeautyProducts/${id}`)
+    .get(`https://server-sepia-tau.vercel.app/SwissBeautyProducts/${id}`)
     .then((res) => {
       dispatch({ type: "SWISS_Single_PRODUCT_SUCCESS", payload: res.data });
     })

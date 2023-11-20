@@ -32,9 +32,7 @@ export default function GenricComponent({
   }, []);
 
   return (
-    <
-      // boxShadow={"md"}
-    >
+    <>
       <Box
         _hover={{ textDecoration: "none" }}
         key={id}
@@ -91,10 +89,10 @@ export default function GenricComponent({
           </Box>
         </Link>
       </Box>
-
-      <Box textAlign={"center"} w={"100%"} mt={5} mb={1}>
-        {cart}
-      </Box>
+      {cart}
+      {/* <Box textAlign={"center"} w={"90%"} mt={5} mb={1}>
+        
+      </Box> */}
 
       {/* </Box> */}
     </>

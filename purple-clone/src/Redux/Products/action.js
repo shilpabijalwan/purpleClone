@@ -9,7 +9,7 @@ import {
 export const Get_Product = (id) => (dispatch) => {
   dispatch({ type: PRODUCT_REQUEST });
   axios
-    .get(`https://tan-frail-hummingbird.cyclic.app/featured/${id}`)
+    .get(`https://server-sepia-tau.vercel.app/featured/${id}`)
     .then((res) => {
       dispatch({ type: GET_PRODUCT_SUCCESS, payload: res.data });
       // console.log(res.data);

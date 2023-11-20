@@ -1,11 +1,10 @@
 import React from "react";
-import { BsHeart, BsCart2, BsEmojiSmile } from "react-icons/bs";
+import { BsHeart, BsCart2 } from "react-icons/bs";
 import {
   Box,
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
@@ -13,15 +12,8 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
   Image,
-  Img,
-  List,
-  ListItem,
-  Grid,
-  VStack,
-  Input,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -32,9 +24,16 @@ import {
 
 import PopOver from "./PopoverContent";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import MyModal from "./Modal/Modal";
 
-export default function Navbar({ appbar }) {
+export default function Navbar({ appbar, display }) {
   const { isOpen, onToggle } = useDisclosure();
+
+  const count = useSelector((data) => {
+    return data.cartReduced.cart.length;
+  });
+  // console.log(count);
 
   return (
     <Box
@@ -43,6 +42,7 @@ export default function Navbar({ appbar }) {
       w="100%"
       top={appbar ? "60px" : 0}
       m={"auto"}
+      bg={"white"}
       border={{
         base: "2px solid red", // 0px
         sm: "2px solid gray", // ~480px. em is a relative unit and is dependant on the font-size.
@@ -83,17 +83,19 @@ export default function Navbar({ appbar }) {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
+
         <Flex
           flex={{ base: 1 }}
           justify={{ base: "center", md: "start" }}
           // border={"1px solid black"}
         >
-          <Image
-            src="https://document-export.canva.com/2akXM/DAFth62akXM/8/thumbnail/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20230919%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230919T214907Z&X-Amz-Expires=85683&X-Amz-Signature=b1ebd66c8fa8d37782d369bab53a5afb8b5d9140e11ae884dcd3d82753b99eb2&X-Amz-SignedHeaders=host&response-expires=Wed%2C%2020%20Sep%202023%2021%3A37%3A10%20GMT"
-            h={50}
-            // border={"1px solid black"}
-          />
-
+          <Link to={"/"}>
+            <Image
+              src="https://document-export.canva.com/2akXM/DAFth62akXM/8/thumbnail/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20231027%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231027T214907Z&X-Amz-Expires=89283&X-Amz-Signature=db451b467a4a79e61357138fd31a956da2a2ae7df70bec217e4efa87c10d228f&X-Amz-SignedHeaders=host&response-expires=Sat%2C%2028%20Oct%202023%2022%3A37%3A10%20GMT"
+              h={50}
+              // border={"1px solid black"}
+            />
+          </Link>
           <Flex display={{ base: "none", md: "flex" }} m={"auto"}>
             <DesktopNav />
           </Flex>
@@ -108,12 +110,12 @@ export default function Navbar({ appbar }) {
             xl: "900px", // ~1280px
             "2xl": "900px",
           }}
-          // border={"3px solid blue"}
+          // border={"1px solid blue"}
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
           direction={"row"}
-          spacing={3}>
-          <Link to={"wishlist"}>
+          spacing={{ base: 10, md: 5 }}>
+          <Link to={"/wishlist"}>
             <Text
               display={{ base: "none", md: "inline-flex" }}
               fontSize={{
@@ -129,32 +131,40 @@ export default function Navbar({ appbar }) {
               <BsHeart />
             </Text>
           </Link>
+          <Link to={"/cart"}>
+            <Text
+              display={{ md: "inline-flex" }}
+              fontSize={{
+                base: "23px", // 0px
+                sm: "23px", // ~480px. em is a relative unit and is dependant on the font-size.
+                md: "23px", // ~768px imp
+                lg: "30px", // ~992px
+                xl: "35px", // ~1280px
+                "2xl": "35px",
+              }}>
+              <BsCart2 />
+              {count ? (
+                <Box
+                  ml={4}
+                  w={6}
+                  h={6}
+                  position={"absolute"}
+                  top={2}
+                  fontSize={10}
+                  bg={"#E2D3EE"}
+                  textAlign={"center"}
+                  pt={1}
+                  borderRadius={"50px"}
+                  display={display}>
+                  <b>{count}</b>
+                </Box>
+              ) : (
+                ""
+              )}
+            </Text>
+          </Link>
 
-          <Text
-            display={{ md: "inline-flex" }}
-            fontSize={{
-              base: "23px", // 0px
-              sm: "23px", // ~480px. em is a relative unit and is dependant on the font-size.
-              md: "23px", // ~768px imp
-              lg: "30px", // ~992px
-              xl: "35px", // ~1280px
-              "2xl": "35px",
-            }}>
-            <BsCart2 />
-          </Text>
-          <Text
-            // as={"a"}
-            display={{ md: "inline-flex" }}
-            fontSize={{
-              base: "23px", // 0px
-              sm: "23px", // ~480px. em is a relative unit and is dependant on the font-size.
-              md: "23px", // ~768px imp
-              lg: "30px", // ~992px
-              xl: "35px", // ~1280px
-              "2xl": "35px",
-            }}>
-            <BsEmojiSmile />
-          </Text>
+          <MyModal />
         </Stack>
       </Flex>
 
@@ -215,7 +225,6 @@ const DesktopNav = () => {
 
               {navItem.children && (
                 <PopoverContent
-                  // border={"1px solid black"}
                   boxShadow={"xl"}
                   bg={popoverContentBgColor}
                   minW={"4xl"}

@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   Image,
+  Spacer,
   Text,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
@@ -16,7 +17,7 @@ import WishList from "../../Components/AddToWishList";
 const truncate = (input) =>
   input?.length > 5 ? `${input.substring(0, 60)}...` : input;
 
-export default function GenricCompo({ data }) {
+export default function GenricCompo({ data, handleAdd, handlewishlist }) {
   // console.log(data);
 
   const [showTruncate, setShowTruncate] = useState(true);
@@ -35,7 +36,7 @@ export default function GenricCompo({ data }) {
 
   useEffect(() => {
     discountPrice(data.discount, data.price);
-  }, [actualdata]);
+  }, []);
 
   return (
     <>
@@ -99,9 +100,24 @@ export default function GenricCompo({ data }) {
         </Box>
       </Link>
 
-      <Flex gap={5} w={"200px"} m={"auto"} mt={5}>
-        <AddToCart varient={"outline"} px={3} size={"sm"} w={"100%"} />
-        <WishList varient={"glost"} size={"sm"} />
+      <Flex
+        w={{ base: "220px", md: "280px" }}
+        m={"auto"}
+        mt={5}
+        border={"1px solid black"}>
+        <AddToCart
+          varient={"outline"}
+          size={"sm"}
+          w={"100px"}
+          handleAdd={() => handleAdd(data)}
+        />
+        <Spacer />
+        <WishList
+          varient={"glost"}
+          size={"sm"}
+          w={"50px"}
+          handlewishlist={() => handlewishlist(data)}
+        />
       </Flex>
     </>
   );

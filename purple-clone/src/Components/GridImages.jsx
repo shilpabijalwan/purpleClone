@@ -5,14 +5,20 @@ import { Link } from "react-router-dom";
 import { Grid, Image } from "@chakra-ui/react";
 import DataFetched from "../FetchData/DataFetched";
 import { brandimgs } from "./Urls/url";
+import { useDispatch, useSelector } from "react-redux";
+import { GET_Grid_DATA } from "../Redux/GridImgs/action";
 
 export default function GridImages() {
-  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
+  const store = useSelector((res) => {
+    return res.GridReducer;
+  });
+  console.log(store);
+
+  const data = store.gridImg;
   useEffect(() => {
-    DataFetched(brandimgs).then((res) => {
-      setData(res.data);
-    });
+    dispatch(GET_Grid_DATA);
   }, []);
 
   // console.log(data);
@@ -25,7 +31,7 @@ export default function GridImages() {
       w={{ base: "90%", md: "80%" }}>
       {data.map((ele, i) => (
         <Link to={`/brandDetail/${ele.id}/${ele.brand}`}>
-          <Image src={ele.image} w={"600px"} m={"auto"} key={i} />
+          <Image src={ele.image} w={"600px"} m={"auto"} key={ele.id} />
         </Link>
       ))}
     </Grid>

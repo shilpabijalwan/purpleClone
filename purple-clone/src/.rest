@@ -1,0 +1,1 @@
+DELETE https://server-sepia-tau.vercel.app/cart

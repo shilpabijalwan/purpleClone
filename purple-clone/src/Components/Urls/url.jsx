@@ -1,6 +1,6 @@
-export const featuredUrl = "https://tan-frail-hummingbird.cyclic.app/featured";
+export const featuredUrl = "https://server-sepia-tau.vercel.app/featured";
 
 export const SwissBeautyUrl =
-  "https://tan-frail-hummingbird.cyclic.app/SwissBeautyProducts";
+  "https://server-sepia-tau.vercel.app/SwissBeautyProducts";
 
-export const brandimgs = `https://tan-frail-hummingbird.cyclic.app/grid_Brands`;
+export const brandimgs = `https://server-sepia-tau.vercel.app/grid_Brands`;

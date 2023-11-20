@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Text,
+  Toast,
+  useToast,
+} from "@chakra-ui/react";
 
 import Navbar from "../Components/Navbar";
 import PageNavigation from "../Components/PageNavigation";
@@ -9,7 +17,6 @@ import PageNavigation from "../Components/PageNavigation";
 import { ProductImages } from "../Components/ProductImages";
 import Stars from "../Components/Stars";
 
-import AddToCart from "../Components/AddToCart";
 import AddToWishList from "../Components/AddToWishList";
 
 import ZipCode from "../Components/ZipCode";
@@ -20,7 +27,13 @@ import { Get_Product } from "../Redux/Products/action";
 
 import Spiner from "../Components/Spiner";
 
+import { AddtoCart } from "../Redux/Cart/action";
+import { Add_To_WishList } from "../Redux/Wishlist/action";
+
+import AddToCart from "../Components/AddToCart";
+
 export default function SingleProductPage() {
+  const toast = useToast();
   const { id } = useParams();
   // console.log(id);
   const dispatch = useDispatch();
@@ -39,19 +52,36 @@ export default function SingleProductPage() {
 
   const discountPrice = (discountvalue, price) => {
     let data = (discountvalue / 100) * price;
-    const ceilvalue = Math.ceil((discountvalue / 100) * price);
-    let newdata = Math.ceil(price - data);
+    const ceilvalue = Math.round((discountvalue / 100) * price);
+    let newdata = Math.round(price - data);
     setSavemoney(ceilvalue);
     setActualdata(newdata);
   };
 
   useEffect(() => {
     dispatch(Get_Product(id));
-  }, []);
-
-  useEffect(() => {
     discountPrice(store.products.discount, store.products.price);
-  }, [discountPrice]);
+  }, [store.products.price]);
+
+  function Toast(title) {
+    return toast({
+      title: title,
+      description: "Product Added To Cart.",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
+  }
+
+  const handleAdd = (data) => {
+    dispatch(AddtoCart(data));
+    Toast("Add to Cart");
+  };
+
+  const handlewishlist = (data) => {
+    dispatch(Add_To_WishList(data));
+    Toast("Add to Wishlist");
+  };
 
   return isLoading ? (
     <Spiner />
@@ -145,8 +175,13 @@ export default function SingleProductPage() {
               // border={"1px solid blue"}
               gap={10}
               justifyContent={"space-evenly"}>
-              <AddToCart px={10} />
-              <AddToWishList text={"WishList"} px={7} />
+              <AddToCart handleAdd={() => handleAdd(store.products)} px={20} />
+
+              <AddToWishList
+                text={"WishList"}
+                px={20}
+                handlewishlist={() => handlewishlist(store.products)}
+              />
             </Box>
             <br />
             <ZipCode />
