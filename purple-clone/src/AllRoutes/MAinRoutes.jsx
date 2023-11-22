@@ -12,8 +12,9 @@ import FinalCheckout from "../Pages/CheckOutPage/FinalCheckout";
 import { useNavigate } from "react-router-dom";
 import BankDetails from "../Pages/CheckOutPage/BankDetails";
 import End from "../Pages/EndPage/End";
+import PrivateRouter from "../PriviteRouter/PrivateRouter";
+import MyModal from "../Components/Modal/Modal";
 export default function MAinRoutes() {
-  const navigate = useNavigate();
   const addresslength = useSelector((data) => {
     return data.addressReducer.adress;
   });
@@ -22,7 +23,17 @@ export default function MAinRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
-      <Route path="/wishlist" element={<MyWishList />} />
+      <Route path="/login" element={<MyModal />} />
+
+      <Route
+        path="/wishlist"
+        element={
+          <PrivateRouter>
+            <MyWishList />
+          </PrivateRouter>
+        }
+      />
+
       <Route path="/cart" element={<CartPage />} />
       <Route
         path="/productdetail/:id/:category"

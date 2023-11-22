@@ -14,6 +14,7 @@ export default function GenricComponent({
   category,
   discription,
   cart,
+  handleAdd,
 }) {
   const [showTruncate, setShowTruncate] = useState(true);
   const [actualdata, setActualdata] = useState();
@@ -90,11 +91,12 @@ export default function GenricComponent({
         </Link>
       </Box>
       {cart}
+
       {/* <Box textAlign={"center"} w={"90%"} mt={5} mb={1}>
         
       </Box> */}
-
       {/* </Box> */}
     </>
   );
 }
+

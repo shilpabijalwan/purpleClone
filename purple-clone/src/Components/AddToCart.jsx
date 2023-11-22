@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/react";
 import React from "react";
-import axios from "axios";
+
 
 export default function AddToCart({ pl,varient, px, size, w, handleAdd }) {
   return (

@@ -45,11 +45,16 @@ export default function Footer() {
           mt={10}
           textAlign={"center"}>
           {footerimgs.map((ele) => (
-            <>
-              <Box boxShadow={"md"} px={1} py={3}>
+            <Box key={Math.random().toString(32).substring(2, 12)}>
+              <Box
+                boxShadow={"md"}
+                px={1}
+                py={3}>
+                
                 <Image src={ele.img} m={"auto"} />
                 <br />
                 <Link
+                  key={Math.random().toString(21).substring(2, 29)}
                   style={{ textDecoration: "none" }}
                   _hover={{ color: "#5E50F7" }}>
                   <Heading size={"xs"}>{ele.Heading}</Heading>
@@ -57,7 +62,7 @@ export default function Footer() {
                   <Text>{ele.Text}</Text>
                 </Link>
               </Box>
-            </>
+            </Box>
           ))}
         </Grid>
       </Hide>

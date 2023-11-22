@@ -35,7 +35,7 @@ export default function CataStory() {
         mt={2}
         mb={10}>
         {data.map((ele) => (
-          <Link to={"#"}>
+          <Link to={"#"} key={Math.random().toString(25).substring(2, 35)}>
             <Box>
               <Image src={ele.image} />
             </Box>

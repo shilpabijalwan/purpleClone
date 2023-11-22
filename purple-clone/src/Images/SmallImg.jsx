@@ -19,6 +19,7 @@ export default function SmallImg() {
       justifyContent={"space-around"}>
       {img.map((ele) => (
         <Box
+          key={Math.random().toString(36).substring(2, 9)}
           //   border={"1px solid black"}
           w={{
             base: "200px",

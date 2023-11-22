@@ -33,7 +33,7 @@ export default function BODYCare() {
         mt={2}
         mb={10}>
         {data.map((ele) => (
-          <Link to={"#"}>
+          <Link to={"#"} key={Math.random().toString(32).substring(2, 9)}>
             <Box>
               <Image src={ele.image} />
             </Box>

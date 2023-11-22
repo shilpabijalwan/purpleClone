@@ -4,10 +4,12 @@ import {
   Flex,
   Grid,
   Heading,
+  Radio,
+  RadioGroup,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionItem,
@@ -15,8 +17,26 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from "@chakra-ui/react";
-
+import { useSearchParams } from "react-router-dom";
 export default function Sortfilter({ brand }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [value, setValue] = React.useState(null);
+  const intialOrder = searchParams.get("order");
+  const [order, setOrder] = useState(intialOrder || "");
+  // const handleSort = (e) => {
+  //   console.log(e.target.value);
+  //   setOrder(e.target.value);
+  // };
+  useEffect(() => {
+    const params = {
+      // category,
+      // sort,
+    };
+    order && (params.order = order);
+
+    setSearchParams(params);
+  }, [order]);
+  console.log(order);
   return (
     <Box
       // border={"2px solid pink"}
@@ -165,8 +185,22 @@ export default function Sortfilter({ brand }) {
 
             <AccordionPanel pb={4} overflowY={"scroll"} h={"150px"}>
               <Stack spacing={2}>
-                <Checkbox colorScheme="green">Checkbox</Checkbox>
-                <Checkbox colorScheme="green">Checkbox</Checkbox>
+                <RadioGroup onChange={setOrder} value={order}>
+                  <Radio
+                    name="order"
+                    colorScheme="green"
+                    value="asc"
+                    defaultChecked={order === "asc"}>
+                    Price:low to high
+                  </Radio>
+                  <Radio
+                    name="order"
+                    colorScheme="green"
+                    value="desc"
+                    defaultChecked={order === "desc"}>
+                    Price: high to low
+                  </Radio>
+                </RadioGroup>
               </Stack>
             </AccordionPanel>
           </AccordionItem>
