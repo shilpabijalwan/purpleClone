@@ -1,6 +1,6 @@
 import { Box, Grid, Heading, Image, Stack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import GreatDeal from "./GreatDeal";
+
 import DataFetched from "../FetchData/DataFetched";
 import { Link } from "react-router-dom";
 
