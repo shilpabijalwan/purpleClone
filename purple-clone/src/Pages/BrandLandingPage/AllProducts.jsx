@@ -19,9 +19,11 @@ import GenricCompo from "./GenericComp";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_SWISS_DATA } from "../../Redux/SwissBeauty/action";
 import SwissAllProduct from "./SwissAllProduct";
+import { useSearchParams } from "react-router-dom";
 
 export default function AllProducts() {
   const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
   const store = useSelector((data) => {
     return data.SwissReducer;
   });
@@ -29,9 +31,15 @@ export default function AllProducts() {
   // console.log(store);
   const { isLoading, isError } = store;
   const { swissproducts } = store;
+  const obj = {
+    params: {
+      _sort: searchParams.get("order") && "price",
+      _order: searchParams.get("order"),
+    },
+  };
 
   useEffect(() => {
-    dispatch(GET_SWISS_DATA());
+    dispatch(GET_SWISS_DATA(obj));
   }, []);
 
   var settings = {

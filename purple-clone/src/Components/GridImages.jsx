@@ -30,8 +30,10 @@ export default function GridImages() {
       m={"auto"}
       w={{ base: "90%", md: "80%" }}>
       {data.map((ele, i) => (
-        <Link to={`/brandDetail/${ele.id}/${ele.brand}`}>
-          <Image src={ele.image} w={"600px"} m={"auto"} key={ele.id} />
+        <Link
+          to={`/brandDetail/${ele.id}/${ele.brand}`}
+          key={Math.random().toString(22).substring(2, 23)}>
+          <Image src={ele.image} w={"600px"} m={"auto"} key={Date.now()} />
         </Link>
       ))}
     </Grid>

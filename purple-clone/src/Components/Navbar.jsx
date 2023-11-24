@@ -27,6 +27,9 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MyModal from "./Modal/Modal";
 
+import MenuList from "../Menu/Menu";
+import MyMenuList from "../Menu/Menu";
+
 export default function Navbar({ appbar, display }) {
   const { isOpen, onToggle } = useDisclosure();
 
@@ -164,7 +167,8 @@ export default function Navbar({ appbar, display }) {
             </Text>
           </Link>
 
-          <MyModal />
+          {/* <MyModal /> */}
+          <MyMenuList />
         </Stack>
       </Flex>
 
@@ -198,10 +202,11 @@ const DesktopNav = () => {
         // border={"1px solid black"}
       >
         {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
+          <Box key={Math.random().toString(30).substring(2, 28)}>
             <Popover trigger={"hover"} placement={"bottom-start"}>
               <PopoverTrigger>
                 <Box
+                  key={Math.random() * 290 + 5478.096}
                   as="a"
                   href={navItem.href ?? "#"}
                   fontSize={{
@@ -240,7 +245,7 @@ const DesktopNav = () => {
                       "2xl": 5,
                     }}>
                     {navItem.children?.map((child) => (
-                      <PopOver key={child.label} {...child} />
+                      <PopOver key={Math.random() * 1330 * 78.096} {...child} />
                     ))}
                   </Stack>
                 </PopoverContent>
@@ -315,7 +320,7 @@ const MobileNavItem = ({ label, children, href }) => {
             children.map((child) => (
               <Box
                 as="a"
-                key={child.label}
+                key={Math.random() * 20 + 54.786}
                 py={2}
                 href={child.href}
                 // border={"1px solid blue"}

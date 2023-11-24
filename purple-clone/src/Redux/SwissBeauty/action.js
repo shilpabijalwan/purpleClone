@@ -5,10 +5,10 @@ import {
   SWISS_PRODUCT_SUCCESS,
 } from "./actionTypes";
 
-export const GET_SWISS_DATA = (id) => (dispatch) => {
+export const GET_SWISS_DATA = (params) => (dispatch) => {
   dispatch({ type: SWISS_PRODUCT_REQUEST });
   axios
-    .get(`https://server-sepia-tau.vercel.app/SwissBeautyProducts`)
+    .get(`https://server-sepia-tau.vercel.app/SwissBeautyProducts`, params)
     .then((res) => {
       dispatch({ type: SWISS_PRODUCT_SUCCESS, payload: res.data });
     })

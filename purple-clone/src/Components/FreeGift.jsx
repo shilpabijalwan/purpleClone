@@ -33,7 +33,7 @@ export default function FreeGift() {
         mt={2}
         mb={10}>
         {data.map((ele) => (
-          <Link to={"#"}>
+          <Link to={"#"} key={Math.random().toString(16).substring(2, 9)}>
             <Box>
               <Image src={ele.image} borderRadius={"50"} />
             </Box>

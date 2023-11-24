@@ -14,15 +14,25 @@ import {
   FormLabel,
   Input,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import { Login } from "../../Redux/authentication/action";
 import { useDispatch } from "react-redux";
+
 export default function MyModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
-
-  // const [userData, SetUserData] = useState([]);
+  const toast = useToast();
+  function Toast(title) {
+    return toast({
+      title: title,
+      description: "Sign Up Successfuly.",
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+    });
+  }
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: "",
@@ -34,6 +44,7 @@ export default function MyModal() {
     e.preventDefault();
 
     dispatch(Login(formData));
+    Toast("Accound Created");
     formData.name = "";
     formData.email = "";
     formData.password = "";
@@ -52,7 +63,12 @@ export default function MyModal() {
         xl: "35px", // ~1280px
       }}>
       <>
-        <BsEmojiSmile />
+        {/* <Text> */}
+        {/* <BsEmojiSmile /> */}
+
+        <Button w={"90%"} ml={3} px={5} colorScheme="purple" mb={3}>
+          Sign in
+        </Button>
 
         <Modal
           size={"xl"}

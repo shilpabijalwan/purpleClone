@@ -17,7 +17,7 @@ import GenricComponent from "./GenricComponent";
 
 import { SampleNextArrow, SamplePrevArrow } from "./Carousel";
 
-export default function FeaturedProducts({ url, cart }) {
+export default function FeaturedProducts({ url, cart, handleAdd }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -82,7 +82,12 @@ export default function FeaturedProducts({ url, cart }) {
         justifyContent={"space-evenly"}>
         <Slider {...settings}>
           {data.map((ele) => (
-            <GenricComponent {...ele} key={ele.id} cart={cart} />
+            <GenricComponent
+              {...ele}
+              key={ele.id}
+              cart={cart}
+             
+            />
           ))}
         </Slider>
       </Box>

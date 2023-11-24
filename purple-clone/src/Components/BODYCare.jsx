@@ -1,6 +1,6 @@
 import { Box, Grid, Heading, Image, Stack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import GreatDeal from "./GreatDeal";
+
 import DataFetched from "../FetchData/DataFetched";
 import { Link } from "react-router-dom";
 
@@ -33,7 +33,7 @@ export default function BODYCare() {
         mt={2}
         mb={10}>
         {data.map((ele) => (
-          <Link to={"#"}>
+          <Link to={"#"} key={Math.random().toString(32).substring(2, 9)}>
             <Box>
               <Image src={ele.image} />
             </Box>

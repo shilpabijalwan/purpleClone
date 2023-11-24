@@ -35,7 +35,7 @@ export default function Tranding() {
         mt={2}
         mb={10}>
         {data.map((ele) => (
-          <Link to={"#"}>
+          <Link to={"#"} key={Math.random() * 380}>
             <Box>
               <Image src={ele.image} />
             </Box>

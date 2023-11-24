@@ -36,7 +36,7 @@ export default function GenricCompo({ data, handleAdd, handlewishlist }) {
 
   useEffect(() => {
     discountPrice(data.discount, data.price);
-  }, []);
+  }, [data.price]);
 
   return (
     <>
@@ -101,14 +101,14 @@ export default function GenricCompo({ data, handleAdd, handlewishlist }) {
       </Link>
 
       <Flex
-        w={{ base: "220px", md: "280px" }}
+        w={{ base: "240px", md: "270px" }}
         m={"auto"}
         mt={5}
         border={"1px solid black"}>
         <AddToCart
           varient={"outline"}
           size={"sm"}
-          w={"100px"}
+          w={"120px"}
           handleAdd={() => handleAdd(data)}
         />
         <Spacer />
