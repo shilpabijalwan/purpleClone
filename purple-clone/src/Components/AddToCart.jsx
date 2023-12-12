@@ -4,7 +4,7 @@ import React from "react";
 
 export default function AddToCart({ pl,varient, px, size, w, handleAdd }) {
   return (
-    <Button
+    <Button 
       px={px}
       ml={pl}
       // px={16}

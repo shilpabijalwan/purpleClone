@@ -11,22 +11,23 @@ export default function ALLProductGrid() {
   const toast = useToast();
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
-  const handleAdd = (data) => {
-    dispatch(AddtoCart(data));
-    Toast("Add to Wishlist");
-  };
-  function Toast(title) {
+
+  function Toast(title, Add) {
     return toast({
       title: title,
-      description: "Product Added To Cart.",
+      description: `Product Added To ${Add}.`,
       status: "success",
       duration: 2000,
       isClosable: true,
     });
   }
-  const handlewishlist = (data) => {
+  const handleAdd = (data, Add) => {
+    dispatch(AddtoCart(data));
+    Toast("Add to Cart", "Cart");
+  };
+  const handlewishlist = (data, Add) => {
     dispatch(Add_To_WishList(data));
-    Toast("Add to Cart");
+    Toast("Add to Wishlist", "Wislist");
   };
   useEffect(() => {
     DataFetched("https://server-sepia-tau.vercel.app/shopAllProduct").then(

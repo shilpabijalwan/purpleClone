@@ -39,7 +39,7 @@ export default function GenricCompo({ data, handleAdd, handlewishlist }) {
   }, [data.price]);
 
   return (
-    <>
+    <Box >
       <Link to={`/brandsinglepage/${data.id}`} textDecoration={"none"}>
         <Box
           _hover={{ textDecoration: "none" }}
@@ -52,10 +52,7 @@ export default function GenricCompo({ data, handleAdd, handlewishlist }) {
           <Image src={data.image} alt="" w={"200px"} m={"auto"} />
           <br />
 
-          <Box
-            mt={2}
-            //   border={"1px solid red"}
-            mx={4}>
+          <Box mt={2} mx={4}>
             <Text fontSize={15}>
               {showTruncate ? truncate(data.discription) : data.discription}
             </Text>
@@ -100,11 +97,7 @@ export default function GenricCompo({ data, handleAdd, handlewishlist }) {
         </Box>
       </Link>
 
-      <Flex
-        w={{ base: "240px", md: "270px" }}
-        m={"auto"}
-        mt={5}
-        border={"1px solid black"}>
+      <Flex w={{ base: "240px", md: "270px" }} m={"auto"} mt={5}>
         <AddToCart
           varient={"outline"}
           size={"sm"}
@@ -119,6 +112,6 @@ export default function GenricCompo({ data, handleAdd, handlewishlist }) {
           handlewishlist={() => handlewishlist(data)}
         />
       </Flex>
-    </>
+    </Box>
   );
 }

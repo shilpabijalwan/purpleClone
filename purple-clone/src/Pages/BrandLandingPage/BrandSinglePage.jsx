@@ -82,7 +82,7 @@ export default function BrandSinglePage() {
           p={2}
           gap={2}
           bg={"white"}
-          // border={"2px solid black"}
+          border={"2px solid black"}
           display={"flex"}
           width={{ base: "100%", lg: "85%" }}
           m={"auto"}
@@ -148,7 +148,7 @@ export default function BrandSinglePage() {
             <br />
             <Box
               display={"flex"}
-              border={"1px solid blue"}
+              // border={"1px solid blue"}
               gap={10}
               justifyContent={"space-evenly"}>
               <AddToCart px={20} handleAdd={() => handleAdd(store)} />

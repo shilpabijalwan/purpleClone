@@ -181,7 +181,7 @@ export default function AllProducts() {
           SHOP ALL PRODUCTS
         </Text>
       </Box>
-      <Box border={"1px sloid blue"}>
+      <Box >
         <SwissAllProduct />
       </Box>
     </Box>
